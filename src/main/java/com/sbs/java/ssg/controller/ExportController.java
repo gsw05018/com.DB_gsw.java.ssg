@@ -3,10 +3,8 @@ package com.sbs.java.ssg.controller;
 import java.util.Scanner;
 
 import com.sbs.java.ssg.container.Container;
-import com.sbs.java.ssg.dto.Member;
 import com.sbs.java.ssg.service.ExportService;
-import com.sbs.java.ssg.service.MemberService;
-import com.sbs.java.ssg.util.Util;
+
 
 public class ExportController extends Controller {
 	private Scanner sc;
@@ -33,9 +31,4 @@ public class ExportController extends Controller {
 		System.out.println("html 생성을 시작합니다.");
 		exportService.makeHtml();
 	}
-
-	@Override
-	public void makeTestData() {
-	}
-	
 }

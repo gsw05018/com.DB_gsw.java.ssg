@@ -1,5 +1,6 @@
 package com.sbs.java.ssg.container;
 
+import com.sbs.java.ssg.controller.Session;
 import com.sbs.java.ssg.dao.ArticleDao;
 import com.sbs.java.ssg.dao.MemberDao;
 import com.sbs.java.ssg.service.ArticleService;
@@ -7,6 +8,7 @@ import com.sbs.java.ssg.service.ExportService;
 import com.sbs.java.ssg.service.MemberService;
 
 public class Container {
+	public static Session session;
 	public static ArticleDao articleDao;
 	public static MemberDao memberDao;
 	public static ArticleService articleService;
@@ -19,6 +21,14 @@ public class Container {
 		articleService = new ArticleService();
 		memberService = new MemberService();
 		exportService = new ExportService();
+	}
+	
+	public static Session getSession() {
+		if ( session == null ) {
+			session = new Session();
+		}
+		
+		return session;
 	}
 
 }

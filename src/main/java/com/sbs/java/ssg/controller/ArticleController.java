@@ -10,17 +10,20 @@ import com.sbs.java.ssg.service.ArticleService;
 import com.sbs.java.ssg.service.MemberService;
 import com.sbs.java.ssg.util.Util;
 
+
 public class ArticleController extends Controller {
 	private Scanner sc;
 	private String command;
 	private String actionMethodName;
 	private ArticleService articleService;
 	private MemberService memberService;
+	private Session session;
 
 	public ArticleController(Scanner sc) {
 		this.sc = sc;
 		articleService = Container.articleService;
 		memberService = Container.memberService;
+		session = Container.getSession();
 	}
 
 	public void doAction(String command, String actionMethodName) {
@@ -64,6 +67,8 @@ public class ArticleController extends Controller {
 		String title = sc.nextLine();
 		System.out.printf("내용 : ");
 		String body = sc.nextLine();
+		
+		Member loginedMember = session.getLoginedMember();
 
 		Article article = new Article(id, regDate, loginedMember.id, title, body);
 		articleService.write(article);
@@ -121,6 +126,8 @@ public class ArticleController extends Controller {
 			System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
 			return;
 		}
+		
+		Member loginedMember = session.getLoginedMember();
 
 		if (foundArticle.memberId != loginedMember.id) {
 			System.out.println("권한이 없습니다.");
@@ -148,6 +155,8 @@ public class ArticleController extends Controller {
 			System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
 			return;
 		}
+		
+		Member loginedMember = session.getLoginedMember();
 
 		if (foundArticle.memberId != loginedMember.id) {
 			System.out.println("권한이 없습니다.");

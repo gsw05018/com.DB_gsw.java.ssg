@@ -3,7 +3,6 @@ package com.sbs.java.ssg.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sbs.java.ssg.container.Container;
 import com.sbs.java.ssg.dto.Article;
 
 public class ArticleDao extends Dao {

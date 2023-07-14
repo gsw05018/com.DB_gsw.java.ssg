@@ -2,6 +2,7 @@ package com.sbs.java.ssg;
 
 import java.util.Scanner;
 
+import com.sbs.java.ssg.container.Container;
 import com.sbs.java.ssg.controller.ArticleController;
 import com.sbs.java.ssg.controller.Controller;
 import com.sbs.java.ssg.controller.ExportController;
@@ -64,7 +65,7 @@ public class App {
 			case "article/delete":
 			case "article/modify":
 			case "member/logout":
-				if ( Controller.isLogined() == false ) {
+				if ( Container.getSession().isLogined() == false ) {
 					System.out.println("로그인 후 이용해주세요.");
 					continue;
 				}
@@ -74,7 +75,7 @@ public class App {
 			switch (actionName) {
 			case "member/login":
 			case "member/join":
-				if ( Controller.isLogined() ) {
+				if ( Container.getSession().isLogined() ) {
 					System.out.println("로그아웃 후 이용해주세요.");
 					continue;
 				}
